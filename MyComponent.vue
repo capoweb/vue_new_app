@@ -120,3 +120,15 @@ export default {
 }
 
 </style> 
+
+<template>
+<div class="find">
+  <h1>Введите пароль</h1>
+   <input type="password"
+   v-bind:value="pass"
+   v-on:input="emailInput"
+   >
+   <div> {{ pass }}</div>
+
+</div>
+</template>
