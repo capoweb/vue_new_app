@@ -122,13 +122,50 @@ export default {
 </style> 
 
 <template>
-<div class="find">
-  <h1>Введите пароль</h1>
-   <input type="password"
-   v-bind:value="pass"
-   v-on:input="emailInput"
-   >
-   <div> {{ pass }}</div>
+<div class="main">
+  <input
+  type="search"
+  v-model="search"
+  class="search"
+  placeholder="type here">
+  <button @click="searchHandler">search name</button>
 
+  <ul>
+    <li v-for="item in searchHandler" :key="item">
+    <p>{{ item.firstname }}</p>
+    </li>
+  </ul>
 </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      search: '',
+      names: [
+        {
+          firstname: 'Ivan'
+        },
+        {
+          firstname: 'Debil'
+        },
+        {
+          firstname: 'Kerill'
+        }
+      ]
+    }
+  },
+  computed: {
+    searchHandler () {
+      return this.names.filter(elem => {
+        return elem.firstname.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
